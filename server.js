@@ -22,7 +22,9 @@ app.post("/api/user", function (req, res, next) {
     username: req.body.username,
     email: req.body.email,
   });
-  user.save();
+  user.save().then((userData) => {
+    res.json(userData);
+  });
 });
 
 app.get("/api/thoughts", (req, res) => {
