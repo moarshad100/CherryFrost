@@ -17,6 +17,14 @@ app.get("/api/user", (req, res) => {
   });
 });
 
+app.post("/api/user", function (req, res, next) {
+  var user = new User({
+    username: req.body.username,
+    email: req.body.email,
+  });
+  user.save();
+});
+
 app.get("/api/thoughts", (req, res) => {
   Thought.find().then((thoughtData) => {
     res.json(thoughtData);
